@@ -23,7 +23,7 @@ const greeting = {
   username: "Aashish Maharjan",
   title: "Hello, I'm Aashish",
   subTitle: emoji(
-    "A passionate Software Developer having an experience of building cloud native web applications, deployed it to AWS."
+    "A dedicated Software Developer having an experience of building cloud native web applications, and passionate about building impactful solutions."
   ),
   resumeLink:
     "https://drive.google.com/file/d/1S0nN6C5uuY6LC4CHZtffKh-ynNM_clcV/view?usp=sharing", // Set to empty to hide the button
@@ -86,10 +86,6 @@ https://fontawesome.com/icons?d=gallery */
       fontAwesomeClassname: "fab fa-node"
     },
     {
-      skillName: "",
-      fontAwesomeClassname: "fab fa-swift"
-    },
-    {
       skillName: "npm",
       fontAwesomeClassname: "fab fa-npm"
     },
@@ -138,7 +134,7 @@ const educationInfo = {
       subHeader: "Bachelor of Science in Computer Science",
       duration: "August 2019 - May 2023",
       desc: "Earned cum laude honors in Computer Science.",
-      descBullets: ["Relevant Courses: Artificial IntelligenceData Structures, Algorithms, Computer Organization, Computer Networks, Operating Systems,"]
+      descBullets: ["Relevant Courses: Artificial Intelligence, Data Structures, Algorithms, Computer Organization, Computer Networks, Operating Systems"]
     }
   ]
 };
@@ -150,7 +146,7 @@ const techStack = {
   experience: [
     {
       Stack: "Frontend/Design", //Insert stack or technology you have experience in
-      progressPercentage: "70%" //Insert relative proficiency in percentage
+      progressPercentage: "75%" //Insert relative proficiency in percentage
     },
     {
       Stack: "Backend",
@@ -158,11 +154,11 @@ const techStack = {
     },
     {
       Stack: "CI/CD and Deployment",
-      progressPercentage: "80%"
+      progressPercentage: "83%"
     },
     {
       Stack: "Data Management",
-      progressPercentage: "70%"
+      progressPercentage: "80%"
     }
   ],
   displayCodersrank: false // Set true to display codersrank badges section need to changes your username in src/containers/skillProgress/skillProgress.js:17:62, defaults to false
@@ -178,10 +174,10 @@ const workExperiences = {
       company: "Mouser Electronics",
       companylogo: require("./assets/images/mouserlogo.avif"),
       date: "July 2023 – January 2025",
-      desc: "Developed and maintained REST APIs and web applications for the company's internal tools using Java, Spring Boot.",
+      desc: "Developed and maintained REST APIs and internal web apps with Java and Spring Boot.",
       descBullets: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "Built a FastAPI microservice to integrate external APIs, reducing client-side calls by 40%.",
+        "Refactored legacy monolith code to boost maintainability and scalability."
       ]
     },
     {
@@ -189,14 +185,14 @@ const workExperiences = {
       company: "UTA",
       companylogo: require("./assets/images/UTA_logomark.png"),
       date: "August 2022 – April 2023",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      desc: "Enhanced dashboard and onboarding tools with new features and API integrations using Flask, JavaScript, and MySQL; collaborated on testing and version control."
     },
     {
       role: "Software Development Intern",
       company: "Sellmark Corporation",
       companylogo: require("./assets/images/sellmark.jpeg"),
       date: "June 2022 – August 2022",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      desc: "Built Django features for warehouse task logging on mobile/tablet, updated PostgreSQL, and created tests with pytest, and Postman."
     }
   ]
 };
@@ -206,7 +202,7 @@ To know how to get github key look at readme.md */
 
 const openSource = {
   showGithubProfile: "true", // Set true or false to show Contact profile using Github, defaults to true
-  display: true // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Some big projects you have worked on
@@ -216,58 +212,51 @@ const bigProjects = {
   // subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
   projects: [
     {
-      image: require("./assets/images/IMG_0014.PNG"),
-      projectName: "Agentic Data Analysis Platform",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      // footerLink: [
-      //   {
-      //     name: "Visit Website",
-      //     url: "http://saayahealth.com/"
-      //   }
-        //  you can add extra buttons here.
-      // ]
-    },
-    {
       image: require("./assets/images/IMG_0015.JPG"),
-      projectName: "Job Search Application",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      footerLink: [
-        {
-          name: "Github Link",
-          url: "http://nextu.se/"
-        }
-      ]
-    },
-    {
-      image: require("./assets/images/IMG_0016.JPG"),
-      projectName: "AI-Powered Code Commenter",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      footerLink: [
-        {
-          name: "Github Link",
-          url: "http://nextu.se/"
-        }
-      ]
+      projectName: "Agentic Data Analysis Platform",
+      projectDesc: "AI-powered data analysis platform integrating LangGraph agents",
     },
     {
       image: require("./assets/images/IMG_0017.JPG"),
-      projectName: "Social Media Application",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      projectName: "Spring Boot ERP System",
+      projectDesc: "Spring Boot microservices application with API Gateway and containerization using Docker",
       footerLink: [
         {
           name: "Github Link",
-          url: "http://nextu.se/"
+          url: "https://github.com/aashish177/springboot-microservices"
         }
       ]
     },
     {
       image: require("./assets/images/scrnsht.png"),
-      projectName: "gRPC-based cross-language calculator",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      projectName: "AI-Powered Code Commenter",
+      projectDesc: "A lightweight, extensible tool that auto-generates meaningful inline comments and docstrings for Python code using OpenAI’s GPT-4 Turbo",
       footerLink: [
         {
           name: "Github Link",
-          url: "http://nextu.se/"
+          url: "https://github.com/aashish177/code-commenter"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/IMG_0016.JPG"),
+      projectName: "Social Media Application",
+      projectDesc: "Spring Boot microservices application with API Gateway and containerization using Docker",
+      footerLink: [
+        {
+          name: "Github Link",
+          url: "https://github.com/aashish177/social-media-app"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/IMG_0014.PNG"),
+      projectName: "gRPC-based cross-language calculator",
+      projectDesc: "A distributed calculator system demonstrating cross-language gRPC communication using protocol buffers.",
+      footerLink: [
+        {
+          name: "Github Link",
+          url: "https://github.com/aashish177/grpc-cross-language-calculator"
         }
       ]
     }
@@ -282,27 +271,23 @@ const bigProjects = {
 const achievementSection = {
   title: emoji("Achievements And Certifications 🏆 "),
   subtitle:
-    "Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !",
+    "",
 
   achievementsCards: [
     {
       title: "AWS Certified Developer - Associate",
       subtitle:
-        "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
+        "Demonstrated expertise in building applications with AWS APIs, CLI, and SDKs, leveraging containers, and deploying via CI/CD pipelines.",
       image: require("./assets/images/aws-certified-developer-associate.png"),
       imageAlt: "AWS Certified Developer - Associate Badge",
       footerLink: [
         {
           name: "Certification",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dYkVvNjdNWjNybWJrbndFSHpNY2NFV1p4YmU0/view?usp=sharing"
+          url: "https://www.credly.com/badges/4d8257f0-bfae-4a1d-a90d-fe4cbe66f951"
         },
         {
-          name: "Award Letter",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dekxBTW5hQkg2WXUyR3QzQmR0VERiLXlGRVdF/view?usp=sharing"
-        },
-        {
-          name: "Google Code-in Blog",
-          url: "https://opensource.googleblog.com/2019/01/google-code-in-2018-winners.html"
+          name: "Letter",
+          url: "https://drive.google.com/file/d/16Jy2CIJv9o1_youPywPJEH0AIzN0uw2u/view?usp=sharing"
         }
       ]
     },
