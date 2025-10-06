@@ -4,7 +4,7 @@ Welcome to my personal website! 🚀
 
 ## About Me
 
-Hi, I'm **Aashish Maharjan** — a Software Developer with 2+ years of experience building scalable backend systems and cloud-native solutions. I'm currently pursuing my Master’s in Computer Science at UT Arlington.
+Hi, I'm **Aashish Maharjan**, a Software Developer with 2+ years of experience building scalable backend systems and cloud-native solutions. I'm currently pursuing my Master’s in Computer Science at UT Arlington.
 
 I love collaborating with fellow developers and am always open to new opportunities in software engineering and cloud development.
 
