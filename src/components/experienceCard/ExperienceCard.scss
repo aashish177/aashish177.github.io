@@ -79,7 +79,7 @@
 
 .experience-roundedimg {
   position: absolute;
-  object-fit: cover;
+  object-fit: contain;
   left: 0;
   right: 0;
   top: 7rem;
@@ -89,6 +89,8 @@
   height: 8rem;
   box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
   border-radius: 50%;
+  border: 3px solid $lightBackground1;
+  /* Added a clean white border to make it stand out */
 }
 
 .experience-text-role {
@@ -100,9 +102,11 @@
   padding-top: 1.5rem;
   line-height: normal;
 }
+
 .dark-mode-text {
   color: $textColorDark !important;
 }
+
 .experience-text-date {
   text-align: center;
   color: $textColor;
@@ -118,7 +122,8 @@
 
 .experience-text-details {
   padding: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  /* Increased from 2rem to accommodate the larger logo */
 }
 
 /* Media Query */
@@ -128,15 +133,22 @@
     padding-top: 0.5rem;
     font-size: 22px;
   }
+
   .experience-text-company {
     font-size: 22px;
   }
+
   .experience-text-date {
     font-size: 18px;
   }
+
   .experience-roundedimg {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 8rem;
+    /* Increased from 6.5rem */
+    height: 8rem;
+    /* Increased from 6.5rem */
+    top: 7rem;
+    /* Centered on the banner border: 11rem - (8rem / 2) */
   }
 }
 
@@ -144,12 +156,15 @@
   .experience-text-role {
     font-size: 22px;
   }
+
   .experience-text-company {
     font-size: 22px;
   }
+
   .experience-text-date {
     font-size: 18px;
   }
+
   .experience-text-desc {
     font-size: 16px;
   }

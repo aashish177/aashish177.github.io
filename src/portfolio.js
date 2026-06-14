@@ -16,7 +16,8 @@ const splashScreen = {
 // Summary And Greeting Section
 
 const illustration = {
-  animated: true // Set to false to use static SVG
+  animated: true, // Set to false to use static SVG/image
+  src: require("./assets/images/Aashish.jpg")
 };
 
 const greeting = {
@@ -128,14 +129,14 @@ const educationInfo = {
         "Relevant Courses: Distributed Systems, Design and Analysis of Algorithms, Data Analysis and Modeling Techniques"
       ]
     },
-    {
-      schoolName: "University of Texas at Arlington",
-      logo: require("./assets/images/UTA_logomark.png"),
-      subHeader: "Bachelor of Science in Computer Science",
-      duration: "August 2019 - May 2023",
-      desc: "Earned cum laude honors in Computer Science.",
-      descBullets: ["Relevant Courses: Artificial Intelligence, Data Structures, Algorithms, Computer Organization, Computer Networks, Operating Systems"]
-    }
+    // {
+    //   schoolName: "University of Texas at Arlington",
+    //   logo: require("./assets/images/UTA_logomark.png"),
+    //   subHeader: "Bachelor of Science in Computer Science",
+    //   duration: "August 2019 - May 2023",
+    //   desc: "Earned cum laude honors in Computer Science.",
+    //   descBullets: ["Relevant Courses: Artificial Intelligence, Data Structures, Algorithms, Computer Organization, Computer Networks, Operating Systems"]
+    // }
   ]
 };
 
@@ -169,6 +170,25 @@ const techStack = {
 const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
+    {
+      role: "SDE Intern (Incoming)",
+      company: "Amazon",
+      companylogo: require("./assets/images/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.webp"),
+      date: "September 2026",
+      desc: "Amazon Returns",
+      descBullets: [
+      ]
+    },
+    {
+      role: "Application Services Intern",
+      company: "UT System",
+      companylogo: require("./assets/images/uts.png"),
+      date: "May 2026 - present",
+      desc: "Currently working on modernizing applications used by 100,000+ students, faculty, and staff across 14 campuses.",
+      descBullets: [
+        "Assisting to migrate 50+ legacy applications to the cloud."
+      ]
+    },
     {
       role: "Developer I",
       company: "Mouser Electronics",
@@ -215,6 +235,45 @@ const bigProjects = {
       image: require("./assets/images/IMG_0015.JPG"),
       projectName: "Agentic Data Analysis Platform",
       projectDesc: "AI-powered data analysis platform integrating LangGraph agents",
+      footerLink: [
+        {
+          name: "Github Link",
+          url: "https://github.com/aashish177/ds_agent"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/agent.jpeg"),
+      projectName: "Digital Scribe",
+      projectDesc: "An autonomous AI content creation system that orchestrates 5 specialized agents using LangGraph to produce high-quality, SEO-optimized content. ",
+      footerLink: [
+        {
+          name: "Github Link",
+          url: "https://github.com/aashish177/Digital-Scribe"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/agent2.png"),
+      projectName: "AgentsBook",
+      projectDesc: "List of agents architecures",
+      footerLink: [
+        {
+          name: "Github Link",
+          url: "https://github.com/aashish177/agentsBook"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/rag4.png"),
+      projectName: "RAG Cook Book",
+      projectDesc: "RAG patterns and architectures",
+      footerLink: [
+        {
+          name: "Github Link",
+          url: "https://github.com/aashish177/RAG-Cookbook"
+        }
+      ]
     },
     {
       image: require("./assets/images/IMG_0017.JPG"),
@@ -228,7 +287,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/scrnsht.png"),
+      image: require("./assets/images/code-comment.png"),
       projectName: "AI-Powered Code Commenter",
       projectDesc: "A lightweight, extensible tool that auto-generates meaningful inline comments and docstrings for Python code using OpenAI’s GPT-4 Turbo",
       footerLink: [
@@ -250,7 +309,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/IMG_0014.PNG"),
+      image: require("./assets/images/grpc-calc.png"),
       projectName: "gRPC-based cross-language calculator",
       projectDesc: "A distributed calculator system demonstrating cross-language gRPC communication using protocol buffers.",
       footerLink: [
@@ -261,7 +320,7 @@ const bigProjects = {
       ]
     }
   ],
-  
+
   display: true // Set false to hide this section, defaults to true
 };
 
@@ -288,6 +347,23 @@ const achievementSection = {
         {
           name: "Letter",
           url: "https://drive.google.com/file/d/16Jy2CIJv9o1_youPywPJEH0AIzN0uw2u/view?usp=sharing"
+        }
+      ]
+    },
+    {
+      title: "AWS Certified Generative AI Developer - Professional",
+      subtitle:
+        "Demonstrated the ability to design and build solutions using various GenAI architectures, integrate FMs into applications and business workflows, and implement agentic AI solutions.",
+      image: require("./assets/images/aws-certified-generative-ai-developer-professional.png"),
+      imageAlt: "AWS Certified Generative AI Developer - Professional Badge",
+      footerLink: [
+        {
+          name: "Certification",
+          url: "https://www.credly.com/badges/11858832-f073-4fe6-8166-2aaecf43ab87/public_url"
+        },
+        {
+          name: "Letter",
+          url: "https://drive.google.com/file/d/10cBEOfsD6X3WzhV_DM4QiIJWZi9L0YuU/view?usp=sharing"
         }
       ]
     },
