@@ -10,7 +10,7 @@ I love collaborating with fellow developers and am always open to new opportunit
 
 - 🌐 [Portfolio Website](https://aashish177.github.io/)
 - 💼 [LinkedIn](https://www.linkedin.com/in/aashishmaharjan1/)
-- 🏆 AWS Developer Associate Certified
+- 🏆 AWS Certified
 
 ## 🚀 Tech Stack
 
