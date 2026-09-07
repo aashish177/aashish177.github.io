@@ -171,11 +171,11 @@ const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
     {
-      role: "SDE Intern (Incoming)",
+      role: "SDE Intern",
       company: "Amazon",
       companylogo: require("./assets/images/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.webp"),
-      date: "September 2026",
-      desc: "Amazon Returns",
+      date: "September 2026 - present",
+      desc: "People eXperience Team",
       descBullets: [
       ]
     },
