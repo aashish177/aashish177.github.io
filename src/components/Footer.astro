@@ -1,0 +1,30 @@
+---
+import {profile} from "../data/portfolio";
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <span>
+    © {year} {profile.name}
+  </span>
+  <a href="#top">Back to top ↑</a>
+</footer>
+
+<style>
+  footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding: 22px 0 28px;
+    font-size: 13px;
+    color: var(--dim);
+  }
+  a {
+    color: var(--dim);
+  }
+  a:hover {
+    color: var(--text);
+  }
+</style>
