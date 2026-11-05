@@ -42,6 +42,7 @@ import {profile, status} from "../data/portfolio";
       densities={[1, 2]}
       priority
     />
+    {status.tag && <span class="tag">{status.tag}</span>}
   </div>
 </section>
 
@@ -132,6 +133,18 @@ import {profile, status} from "../data/portfolio";
     object-position: 50% 30%;
     border: 3px solid var(--a);
     box-shadow: 0 0 0 10px rgba(var(--g-rgb), 0.12);
+  }
+  .tag {
+    position: absolute;
+    right: 6%;
+    bottom: 8%;
+    font-size: 13px;
+    font-weight: 700;
+    background: rgb(var(--g-rgb));
+    color: #141414;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px -10px rgba(var(--g-rgb), 0.9);
   }
   @media (max-width: 820px) {
     .hero {
