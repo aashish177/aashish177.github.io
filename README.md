@@ -1,21 +1,28 @@
 # Aashish Maharjan — Personal Website
 
-Welcome to my personal website! 🚀
+Source for [aashish177.github.io](https://aashish177.github.io/), built with [Astro](https://astro.build) as a static site.
 
-## About Me
+## Run locally
 
-Hi, I'm **Aashish Maharjan**, a Software Developer with 2+ years of experience building scalable backend systems and cloud-native solutions. I'm currently pursuing my Master’s in Computer Science at UT Arlington.
+Requires Node 22.23 or newer.
 
-I love collaborating with fellow developers and am always open to new opportunities in software engineering and cloud development.
+```bash
+npm install
+npm run dev       # http://127.0.0.1:4321
+npm run build     # outputs to dist/
+npm run preview   # serves the production build locally
+```
 
-- 🌐 [Portfolio Website](https://aashish177.github.io/)
-- 💼 [LinkedIn](https://www.linkedin.com/in/aashishmaharjan1/)
-- 🏆 AWS Certified
+## Edit content
 
-## 🚀 Tech Stack
+All content lives in `src/data/portfolio.ts`: profile, experience, education, certifications and projects. Images are in `src/assets/` and are resized and converted to WebP at build time.
 
-- **Languages:** Java, Python, JavaScript
-- **Frameworks:** Spring Boot, FastAPI, React
-- **Cloud:** AWS (EC2, S3, Lambda, etc.)
-- **DevOps:** Docker, CI/CD pipelines
-- **Databases:** MySQL, PostgreSQL
+When a role ends, add its `end` date. The "Now" badge, the hero status pill and the photo tag update from that.
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to the `gh-pages` branch.
+
+## Fonts
+
+[Clash Display](https://www.fontshare.com/fonts/clash-display) and [Satoshi](https://www.fontshare.com/fonts/satoshi) from Fontshare, self-hosted in `public/fonts/`.

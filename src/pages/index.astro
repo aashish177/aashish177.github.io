@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
+import Certifications from "../components/Certifications.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base
+  title="Aashish Maharjan | Software Developer"
+  description="Portfolio of Aashish Maharjan, a software developer building backend, cloud and AI agent systems."
+>
+  <div class="glow" aria-hidden="true"></div>
+  <Nav />
+  <main class="wrap" id="main">
+    <Hero />
+    <Experience />
+    <Education />
+    <Certifications />
+    <Projects />
+    <Contact />
+    <Footer />
+  </main>
+</Base>
+
+<script>
+  // Cursor spotlight on cards.
+  document.getElementById("main")?.addEventListener("pointermove", e => {
+    const card = (e.target as HTMLElement).closest<HTMLElement>(".card");
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--x", `${e.clientX - r.left}px`);
+    card.style.setProperty("--y", `${e.clientY - r.top}px`);
+  });
+</script>
