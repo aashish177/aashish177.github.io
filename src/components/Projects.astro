@@ -83,15 +83,15 @@ const rest = projects.filter(p => !p.featured);
   }
   .project:hover {
     transform: translateY(-3px);
-    border-color: rgba(108, 99, 255, 0.55);
-    box-shadow: 0 0 40px -16px rgba(108, 99, 255, 0.7);
+    border-color: rgba(var(--a-rgb), 0.55);
+    box-shadow: 0 0 40px -16px rgba(var(--g-rgb), 0.7);
   }
   .shot {
     height: 200px;
     background:
       radial-gradient(
         circle at 30% 40%,
-        rgba(108, 99, 255, 0.45),
+        rgba(var(--g-rgb), 0.45),
         transparent 55%
       ),
       var(--card2);

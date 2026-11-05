@@ -20,10 +20,9 @@ import {education} from "../data/portfolio";
       <div>
         <h3>{education.degree}</h3>
         <div class="school">{education.school}</div>
-        <div class="honors">
-          <span class="gpa">GPA {education.gpa}</span>
-          <span class="award">★ {education.award}</span>
-        </div>
+        <p class="honors">
+          GPA {education.gpa} · {education.award}
+        </p>
       </div>
       <div class="dates">
         {education.dates}
@@ -66,27 +65,10 @@ import {education} from "../data/portfolio";
     margin-top: 2px;
   }
   .honors {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
-  }
-  .gpa {
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
-    background: var(--a);
-    padding: 4px 11px;
-    border-radius: 999px;
-  }
-  .award {
-    display: inline-flex;
-    font-size: 12px;
-    font-weight: 700;
-    color: #1a1205;
-    background: var(--orange);
-    padding: 4px 11px;
-    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ac);
+    margin: 10px 0 0;
   }
   .dates {
     font-size: 13px;

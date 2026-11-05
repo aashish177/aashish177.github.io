@@ -30,39 +30,45 @@
 }
 
 :root {
-  --a: #6c63ff;
-  --bg: #08070d;
-  --card: #0f0d17;
-  --card2: #17142a;
-  --line: #1f1c2e;
-  --line2: #2c2840;
-  --text: #ece9f5;
-  --muted: #a09bb8;
-  --dim: #7c7696;
-  --al: #a39dff;
-  --chip: #c9c5ff;
-  --glow: rgba(108, 99, 255, 0.38);
-  --orange: #f59e0b;
+  --a: #2b2a27;
+  --a-rgb: 43, 42, 39;
+  --ac: #9a7a52;
+  --g-rgb: 201, 172, 130;
+  --amz: #c4572e;
+  --amz-rgb: 196, 87, 46;
+  --bg: #f7f6f3;
+  --card: #ffffff;
+  --card2: #efede7;
+  --line: #e4e2dc;
+  --line2: #d9d6ce;
+  --text: #141414;
+  --muted: #5f5d57;
+  --dim: #8d8a82;
+  --al: #2b2a27;
+  --glow: rgba(201, 172, 130, 0.38);
   --display:
     "Clash Display", "Avenir Next", ui-sans-serif, system-ui, sans-serif;
   --body: "Satoshi", "Avenir Next", ui-sans-serif, system-ui, sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
-[data-theme="light"] {
-  --bg: #faf9ff;
-  --card: #ffffff;
-  --card2: #f1effc;
-  --line: #e6e3f3;
-  --line2: #dcd8ee;
-  --text: #16131f;
-  --muted: #5d5872;
-  --dim: #8a85a0;
-  --al: #5a50f0;
-  --chip: #4a41d9;
-  --glow: rgba(108, 99, 255, 0.2);
-  --orange: #d97706;
-  color-scheme: light;
+[data-theme="dark"] {
+  --a: #e8e4dc;
+  --a-rgb: 232, 228, 220;
+  --ac: #d2b48c;
+  --amz: #e07a4f;
+  --amz-rgb: 224, 122, 79;
+  --bg: #0f0e0c;
+  --card: #171512;
+  --card2: #201d19;
+  --line: #2a2622;
+  --line2: #36312b;
+  --text: #efece6;
+  --muted: #a8a29a;
+  --dim: #7d776f;
+  --al: #e8e4dc;
+  --glow: rgba(201, 172, 130, 0.16);
+  color-scheme: dark;
 }
 
 * {
@@ -160,7 +166,7 @@ h2 {
 }
 
 .ac {
-  color: var(--a);
+  color: var(--ac);
 }
 
 .card {
@@ -182,7 +188,7 @@ h2 {
   inset: 0;
   background: radial-gradient(
     300px circle at var(--x, 50%) var(--y, 50%),
-    rgba(108, 99, 255, 0.13),
+    rgba(var(--g-rgb), 0.13),
     transparent 60%
   );
   opacity: 0;
@@ -195,36 +201,32 @@ h2 {
 }
 
 .ring {
-  border-color: rgba(108, 99, 255, 0.55);
-  box-shadow: 0 0 44px -16px rgba(108, 99, 255, 0.65);
+  box-shadow: 0 14px 40px -24px rgba(var(--g-rgb), 0.55);
 }
 
 .dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 8px #34d399;
+  background: #2f9e6a;
+  box-shadow: 0 0 8px #2f9e6a;
   flex: none;
 }
 
+/* Tag lists read as plain text separated by dots. */
 .chips {
   display: flex;
-  gap: 7px;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 13px;
+  color: var(--dim);
 }
 
-.chips li {
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 11px;
-  border-radius: 8px;
-  background: var(--card2);
-  color: var(--chip);
-  border: 1px solid var(--line2);
+.chips li + li::before {
+  content: "·";
+  margin: 0 8px;
 }
 
 .logo-tile {
