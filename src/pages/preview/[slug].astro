@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+import ProjectSpotlight from "../../components/showcase/ProjectSpotlight.astro";
+import {caseStudies, type CaseStudy} from "../../data/showcase";
+
+// Home-page card preview. Only ever built with SHOWCASE_PREVIEW=1.
+export function getStaticPaths() {
+  if (process.env.SHOWCASE_PREVIEW !== "1") return [];
+  return caseStudies.map(study => ({
+    params: {slug: study.slug},
+    props: {study}
+  }));
+}
+
+interface Props {
+  study: CaseStudy;
+}
+
+const {study} = Astro.props;
+---
+
+<Base title={`Card preview: ${study.name}`} description="Preview only">
+  <main class="wrap">
+    <section id="projects">
+      <div class="kicker">Things I've built</div>
+      <h2>Projects</h2>
+      <ProjectSpotlight study={study} />
+    </section>
+  </main>
+</Base>

@@ -1,0 +1,79 @@
+---
+import Base from "../../../layouts/Base.astro";
+import TerminalReplay from "../../../components/showcase/TerminalReplay.astro";
+import {terminalReplays, type TerminalReplayData} from "../../../data/showcase";
+
+// Terminal replay preview, full size and inside a project card.
+// Only ever built with SHOWCASE_PREVIEW=1.
+export function getStaticPaths() {
+  if (process.env.SHOWCASE_PREVIEW !== "1") return [];
+  return terminalReplays.map(data => ({
+    params: {slug: data.slug},
+    props: {data}
+  }));
+}
+
+interface Props {
+  data: TerminalReplayData;
+}
+
+const {data} = Astro.props;
+---
+
+<Base title={`Terminal preview: ${data.title}`} description="Preview only">
+  <main class="wrap">
+    <section>
+      <div class="kicker">Full size (case study or project page)</div>
+      <TerminalReplay data={data} />
+    </section>
+
+    <section>
+      <div class="kicker">Inside the home-page project card</div>
+      <div class="pair">
+        <a class="card project" href="#">
+          <div class="shot">
+            <TerminalReplay data={data} compact />
+          </div>
+          <div class="body">
+            <h3>{data.title}</h3>
+            <p>
+              A distributed gRPC calculator with Java and Go servers and Python
+              and Node.js clients.
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .project {
+    display: block;
+  }
+  .shot {
+    position: relative;
+    height: 200px;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .body {
+    padding: 20px 22px;
+  }
+  h3 {
+    font-size: 20px;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  p {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>
