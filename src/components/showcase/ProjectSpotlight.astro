@@ -1,0 +1,170 @@
+---
+import type {CaseStudy} from "../../data/showcase";
+
+interface Props {
+  study: CaseStudy;
+}
+
+const {study} = Astro.props;
+const href = `/projects/${study.slug}/`;
+---
+
+<article class="card spotlight">
+  <a class="media" href={href} aria-label={`${study.name} case study`}>
+    <slot name="media">
+      <span class="placeholder">PREVIEW</span>
+    </slot>
+  </a>
+  <div class="body">
+    <div class="kicker">Featured project</div>
+    <h3>
+      <a href={href}>{study.name}</a>
+    </h3>
+    <p class="tagline">{study.tagline}</p>
+    <ul class="metrics">
+      {study.metrics.map(m => (
+        <li>
+          <strong>{m.value}</strong>
+          <span>{m.label}</span>
+        </li>
+      ))}
+    </ul>
+    <ul class="chips">
+      {study.tags.map(t => (
+        <li>{t}</li>
+      ))}
+    </ul>
+    <div class="actions">
+      <a class="btn primary" href={href}>
+        Read the case study
+      </a>
+      {study.links.demo && (
+        <a
+          class="btn"
+          href={study.links.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Live demo
+        </a>
+      )}
+      <a
+        class="btn"
+        href={study.links.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .spotlight {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    margin-bottom: 20px;
+  }
+  .media {
+    position: relative;
+    min-height: 320px;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(
+        circle at 30% 40%,
+        rgba(var(--g-rgb), 0.45),
+        transparent 55%
+      ),
+      var(--card2);
+    border-right: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .media :global(img),
+  .media :global(video) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .placeholder {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+  }
+  .body {
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .body .kicker {
+    margin: 0;
+  }
+  h3 {
+    font-size: 28px;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  h3 a {
+    color: var(--text);
+  }
+  .tagline {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .metrics {
+    display: flex;
+    gap: 28px;
+    margin: 4px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .metrics strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 26px;
+    color: var(--text);
+  }
+  .metrics span {
+    font-size: 13px;
+    color: var(--dim);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .btn {
+    padding: 9px 16px;
+    border: 1px solid var(--line2);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .btn:hover {
+    border-color: var(--a);
+  }
+  .btn.primary {
+    background: var(--a);
+    border-color: var(--a);
+    color: var(--bg);
+  }
+  @media (max-width: 820px) {
+    .spotlight {
+      grid-template-columns: 1fr;
+    }
+    .media {
+      min-height: 220px;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+  }
+</style>

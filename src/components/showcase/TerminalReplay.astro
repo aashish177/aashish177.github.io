@@ -1,0 +1,204 @@
+---
+import type {TerminalReplayData} from "../../data/showcase";
+
+interface Props {
+  data: TerminalReplayData;
+  // Compact fills a card's media area: no header, smaller text.
+  compact?: boolean;
+}
+
+const {data, compact = false} = Astro.props;
+const pad = (s: string, n: number) => s.padEnd(n, " ");
+const callWidth = Math.max(
+  ...data.lines.map(l => (l.kind === "call" ? l.call.length : 0))
+);
+---
+
+<div class:list={["term", {compact}]} data-term>
+  {!compact && (
+    <div class="bar">
+      <div>
+        <div class="kicker">{data.title}</div>
+        <div class="caption">{data.caption}</div>
+      </div>
+      <div class="controls">
+        {data.sample && <span class="badge">Sample output</span>}
+        <button type="button" class="play" data-term-play>
+          Replay
+        </button>
+      </div>
+    </div>
+  )}
+  <pre
+    class="screen"
+    aria-label={`${data.title} terminal output`}
+  >{data.lines.map(l =>
+      l.kind === "call" ? (
+        <span class:list={["ln", {err: l.error}]}><span class:list={["lang", l.client]}>{pad(l.client, 6)}</span> → <span class:list={["lang", l.server]}>{pad(l.server, 4)}</span>  {pad(l.call, callWidth)}  <b>{pad(l.result, 5)}</b> <span class="note">{l.note}</span>{"\n"}</span>
+      ) : l.kind === "cmd" ? (
+        <span class="ln"><span class="prompt">$</span> {l.text}{"\n"}</span>
+      ) : (
+        <span class="ln info">{l.text}{"\n"}</span>
+      )
+    )}</pre>
+</div>
+
+<script>
+  // Types the lines in once when scrolled into view; Replay runs it again.
+  for (const root of document.querySelectorAll<HTMLElement>("[data-term]")) {
+    const lines = [...root.querySelectorAll<HTMLElement>(".ln")];
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let timers: number[] = [];
+
+    const play = () => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      if (reduced) {
+        lines.forEach(l => l.classList.add("on"));
+        return;
+      }
+      root.classList.add("armed");
+      lines.forEach(l => l.classList.remove("on"));
+      lines.forEach((l, i) =>
+        timers.push(
+          window.setTimeout(() => l.classList.add("on"), 250 + i * 420)
+        )
+      );
+    };
+
+    root
+      .querySelector<HTMLButtonElement>("[data-term-play]")
+      ?.addEventListener("click", play);
+
+    if (reduced || !("IntersectionObserver" in window)) {
+      lines.forEach(l => l.classList.add("on"));
+      continue;
+    }
+    root.classList.add("armed");
+    lines.forEach(l => l.classList.remove("on"));
+    new IntersectionObserver(
+      (entries, obs) => {
+        if (entries.some(e => e.isIntersecting)) {
+          obs.disconnect();
+          play();
+        }
+      },
+      {threshold: 0.4}
+    ).observe(root);
+  }
+</script>
+
+<style>
+  .term {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .term.compact {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--card2);
+    display: flex;
+    align-items: center;
+  }
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .bar .kicker {
+    margin: 0;
+  }
+  .caption {
+    color: var(--muted);
+    font-size: 14.5px;
+  }
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .badge {
+    font-size: 12px;
+    color: var(--ac);
+    border: 1px solid var(--ac);
+    border-radius: 999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .play {
+    font: inherit;
+    font-size: 14px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--a);
+    background: var(--a);
+    color: var(--bg);
+    cursor: pointer;
+  }
+  .screen {
+    margin: 0;
+    padding: 18px 22px 22px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--card2);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .compact .screen {
+    width: 100%;
+    font-size: 11.5px;
+    line-height: 1.7;
+    padding: 16px 18px;
+    overflow: hidden;
+  }
+  .ln {
+    opacity: 1;
+    transition: opacity 0.25s;
+  }
+  [data-term].armed .ln:not(.on) {
+    opacity: 0;
+  }
+  .prompt {
+    color: var(--dim);
+  }
+  .info {
+    color: var(--dim);
+  }
+  .note {
+    color: var(--muted);
+  }
+  .err b,
+  .err .note {
+    color: var(--amz);
+  }
+  .lang {
+    font-weight: 700;
+  }
+  .python {
+    color: #3f7cc0;
+  }
+  .node {
+    color: #2f9e6a;
+  }
+  .java {
+    color: var(--amz);
+  }
+  .go {
+    color: var(--ac);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ln {
+      transition: none;
+    }
+  }
+</style>

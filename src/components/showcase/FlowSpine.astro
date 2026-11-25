@@ -1,0 +1,120 @@
+---
+import type {Step} from "../../data/showcase";
+
+interface Props {
+  steps: Step[];
+  parallelLabel?: string;
+}
+
+const {steps, parallelLabel = "Run in parallel"} = Astro.props;
+const serial = steps.filter(s => s.group !== "parallel");
+const parallel = steps.filter(s => s.group === "parallel");
+---
+
+<ol class="spine">
+  {serial.map((s, i) => (
+    <li class="step">
+      <span class="num">{i + 1}</span>
+      <div>
+        <div class="name">{s.name}</div>
+        <div class="detail">{s.detail}</div>
+      </div>
+    </li>
+  ))}
+  {parallel.length > 0 && (
+    <li class="step fork">
+      <span class="num">{serial.length + 1}</span>
+      <div class="fork-body">
+        <div class="name">{parallelLabel}</div>
+        <ul class="branches">
+          {parallel.map(s => (
+            <li>
+              <div class="name">{s.name}</div>
+              <div class="detail">{s.detail}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  )}
+</ol>
+
+<style>
+  .spine {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    padding-bottom: 22px;
+  }
+  .step::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 36px;
+    bottom: 0;
+    width: 2px;
+    background: var(--line2);
+  }
+  .step:last-child::before {
+    display: none;
+  }
+  .fork::before,
+  .step:has(+ .fork)::before {
+    background: var(--ac);
+  }
+  .num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--card);
+    border: 1px solid var(--line2);
+    font-family: var(--display);
+    font-size: 15px;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+  .fork .num {
+    border-color: var(--ac);
+    color: var(--ac);
+  }
+  .name {
+    font-weight: 700;
+    color: var(--text);
+    padding-top: 7px;
+  }
+  .detail {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+  .branches {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .branches li {
+    background: var(--card2);
+    border: 1px dashed var(--line2);
+    border-radius: 14px;
+    padding: 4px 14px 12px;
+  }
+  @media (max-width: 720px) {
+    .branches {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
